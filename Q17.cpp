@@ -5,7 +5,7 @@ using namespace std;
 
 class Solution {
 public:
-	vector<string> letterCombinations(string digits) {
+	vector<string> letterCombinations_1(string digits) {
 		vector<string> result;
 		int d_len = digits.size();
 		if (d_len == 0) return result;
@@ -43,7 +43,39 @@ public:
 		return result;
 	}
 
+	vector<string> addLetter(vector<string> input, char digit){
+		vector<string> strs = { "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
+		int loc = digit - '2';
+		vector<string> result;
+		for (int i = 0; i < strs[loc].size(); i++){
+			if (input.size() == 0){
+				string temp;
+				temp += strs[loc][i];
+				result.push_back(temp);
+			}
+			else{
+				for (int j = 0; j < input.size(); j++){
+					string temp;
+					temp += input[j] + strs[loc][i];
+					result.push_back(temp);
+				}
+			}
+		}
 
+		return result;
+	}
+
+	vector<string> letterCombinations(string digits){
+		vector<string> result;
+		int digits_len = digits.size();
+		if (digits_len == 0) return result;
+
+		for (int i = 0; i < digits_len; i++){
+			result = addLetter(result, digits[i]);
+		}
+
+		return result;
+	}
 };
 
 int main(void){
