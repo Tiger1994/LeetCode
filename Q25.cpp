@@ -46,12 +46,12 @@ public:
 			}
 		}
 
-		while (head && d_count > 0){
-			ListNode *temp = head;
-			head = head->next;
-			delete temp;
-			d_count--;
-		}
+		//while (head && d_count > 0){
+		//	ListNode *temp = head;
+		//	head = head->next;
+		//	delete temp;
+		//	d_count--;
+		//}
 
 		return feakHead.next;
 	}
