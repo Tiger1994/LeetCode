@@ -18,7 +18,7 @@ public:
 	int removeDuplicates_2(vector<int>& nums) {
 		if (!nums.size()) return 0;
 		int len = 0;
-		for (int i = 0; i < nums.size() - 1; i++){
+		for (int i = 0; i < nums.size(); i++){
 			if (nums[len] == nums[i]) continue;
 			else nums[++len] = nums[i];
 		}
