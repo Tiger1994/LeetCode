@@ -11,13 +11,22 @@ public:
 		}
 		return dp[n - 1];
 	}
+
+	int climbStairs2(int n){
+		int f = 0, g = 1;
+		while (n--) {
+			g += f; f = g - f;
+		}
+
+		return g;
+	}
 };
 
 int main(void){
-	int n = 3;
+	int n = 1;
 
 	Solution model;
-	int result = model.climbStairs(n);
+	int result = model.climbStairs2(n);
 
 	return 0;
 }
