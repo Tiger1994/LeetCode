@@ -40,7 +40,7 @@ public:
 		if (int(board.size()) <= 1 || int(board[0].size()) <= 0) return;
 		int highth = board.size(), width = board[0].size();
 
-		// ´ÓboardµÄËÄÖÜ½øÐÐFloodFill
+		// ä»Žboardçš„å››å‘¨è¿›è¡ŒFloodFill
 		for (int i = 0; i < highth; i++){
 			floodFill(board, i, 0);
 			floodFill(board, i, width - 1);
@@ -50,7 +50,7 @@ public:
 			floodFill(board, highth - 1, j);
 		}
 
-		// ½«Ô­ÏÈ¼ÇÂ¼µÄ'#'×ª»»Îª'X'
+		// å°†åŽŸå…ˆè®°å½•çš„'#'è½¬æ¢ä¸º'O'
 		for (int i = 0; i < highth; i++){
 			for (int j = 0; j < width; j++){
 				if (board[i][j] == '#')
