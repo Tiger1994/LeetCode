@@ -35,7 +35,33 @@ public:
 		return res;
 	}
 
+	bool check(string s, vector<string>& wordDict){
+		unordered_set<string> wordSet;
+		for (string word : wordDict)
+			wordSet.insert(word);
+		int sLen = s.size();
+		vector<bool> record(sLen, false);
+		for (int i = 0; i < sLen; i++){
+			string subS = s.substr(0, i + 1);
+			if (wordSet.find(subS) != wordSet.end()){
+				record[i] = true;
+				continue;
+			}
+			for (int j = 1; j < i + 1; j++){
+				string subS = s.substr(i - j + 1, j);
+				if (wordSet.find(subS) != wordSet.end())
+					record[i] = record[i - j] || record[i];
+			}
+		}
+
+		return record[sLen - 1];
+	}
+
 	vector<string> wordBreak2(string s, vector<string>& wordDict){
+		if (!check(s, wordDict)){
+			vector<string> v;
+			return v;
+		}
 		unordered_set<string> wordSet;
 		for (string word : wordDict)
 			wordSet.insert(word);
@@ -44,7 +70,7 @@ public:
 		for (int i = len-1; i >= 0; i--){
 			string profix = s.substr(i, len - i);
 			if (wordSet.find(profix) != wordSet.end()){
-				res[i].push_back({ profix });
+				res[i].push_back(profix);
 			}
 			for (int j = i + 1; j < len; j++){
 				string profix = s.substr(i, j-i);
