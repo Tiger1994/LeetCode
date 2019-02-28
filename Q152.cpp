@@ -20,7 +20,7 @@ public:
 
 	int maxProduct2(vector<int> &nums) {
 		if (nums.size() == 1) return nums[0];
-		int res = INT_MIN;
+		int res = nums[0];
 		int max_p = nums[0];
 		int min_n = nums[0];
 		for (auto it = nums.begin() + 1; it != nums.end();it++) {
